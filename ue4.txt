@@ -1,0 +1,11 @@
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "想改就改")
+
+FVector NewLocation = GetActorLocation();
+	FRotator NewRotation = GetActorRotation();
+	float RunningTime = GetGameTimeSinceCreation();
+	float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
+	NewLocation.Z += DeltaHeight * FloatSpeed;          //按FloatSpeed调整高度
+	float DeltaRotation = DeltaTime * RotationSpeed;    //每秒旋转等于RotationSpeed的角度
+	NewRotation.Yaw += DeltaRotation;
+	SetActorLocationAndRotation(NewLocation, NewRotation);
+一些设置   yaw是绕y轴旋转
